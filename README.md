@@ -57,9 +57,9 @@ For encryption / decryption we are currently using [Keybase's PGP library](https
 
 ### Application Contract ABI
 
-```json
-{"key": "value"}
-```
+Use this in the web3.eth.Contract constructor
+
+See [Application.json](https://github.com/gladiusio/gladius-hiring-challenge/blob/master/Application.json) for full JSON file.
 
 ### Keys
 
