@@ -4,7 +4,7 @@
 
 Welcome to the Gladius coding challenge. The challenge is pretty simple, create a dApp (Decentralized App) that submits your hiring information (encrypted against our public key) to the blockchain.
 
-Our contract has been deployed to the Ropsten Test Net. If you need the Application Contract address, email us at [careers@gladius.io](mailto://careers@gladius.io). We want to keep this secret to get an estimate of
+Our contract has been deployed to the Ropsten Test Net. If you need the Application Contract address, email us at [careers@gladius.io](mailto://careers@gladius.io). We want to keep this secret to get an estimate of time to completion.
 
 You will have approximately 2 days to complete and submit your application to the blockchain. We are not going to judge by time per se, e.g. a complete well-coded application that took 3 days is better than a rushed application that took a single day.
 
