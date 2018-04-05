@@ -42,6 +42,8 @@ One of the most common wallet managers is [MetaMask](https://metamask.io/). Regi
 
 For rapid development, we recommend using the [web3 js framework](https://github.com/ethereum/web3.js/) to access the blockchain.
 
+Truffle has a great tutorial to use Infura to connect to the Ropsten test network [here](http://truffleframework.com/tutorials/using-infura-custom-provider)
+
 A great utility to check statuses, errors, and txHashes: [etherscan](https://ropsten.etherscan.io/)
 
 See the `Application Contract ABI` section of this gist for the Application Contract jsonInterface ABI.
