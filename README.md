@@ -6,7 +6,7 @@ Welcome to the Gladius coding challenge. The challenge is pretty simple, create 
 
 Blockchain development is relatively new, so we've created this challenge in a way that there are multiple levels of completion. We are looking for creativity and problem solving skills are more important than 100% completion.
 
-This challenge asks that you write a server side application, for instance Node.js with Express routing; an interface to input data to submit; and successfully submitting this data to our deployed contract.
+This challenge asks that you write a server side application with a client facing blockchain interface, for instance Node.js with Express routing; an interface to input data to submit; and successfully submitting this data to our deployed contract. This can be done client sided where the user authorizes transactions through something like MetaMask.
 
 Our contract has been deployed to the Ropsten Test Net. If you need the Application Contract address, email us at [careers@gladius.io](mailto://careers@gladius.io). We want to keep this secret to get an estimate of time to completion.
 
@@ -51,16 +51,17 @@ We will be judging submissions based on code quality, completeness, and time to 
 Levels of Completion and Tasks to Complete:
 
 * Level 1
-  * Create a server side application
-  * This application reads `getPublicData()` from the Ropsten Network deployed contract
-  * The Application takes the response and requests the required fields with a UI
+  * Create a server side application to serve the webpage
+  * This application or client is able to read `getPublicData()` from the Ropsten Network deployed contract, this is the specification of what should be sent later.
+  * The client is able to show the above specification in the UI as a form.
 * Level 2
   * Same as above plus...
-  * Submits the requested data from `getPublicData()` to the `submitApplication(data)` function in the contract
+  * Submits the above form to the `submitApplication(data)` function in the contract
 * Level 3
   * Same as above plus...
-  * Reads and decrypts the data payload from `getEncryptedData()`
-  * Re-encrypts this data with the requested information
+  * Reads and decrypts the data specification from `getEncryptedData()` using your private key (at the bottom of this page)
+  * Fill in the required fields in the UI.
+  * Encrypt that data against the contract public key.
   * Submits this back to the contract through the `submitApplication(data)` function
 * Level 4
   * Same as above plus...
@@ -77,7 +78,7 @@ Your final project should be uploaded to a GitHub repository publicly. This can 
 * Decrypt or read the contract's data
   * The contract will contain two JSON payloads, one plain text and the other encrypted against the public key provided below
   * If encrypted, use the included private key to decrypt this message
-  * The message will be a JSON payload with fields to include to submit to the contract
+  * The message will be a JSON specification with fields to include to submit to the contract
 * Create a way to submit the correct data requested by the property's data
   * Using a REST client, e.g. POSTman, Insomnia, or web form
   * Web UI
