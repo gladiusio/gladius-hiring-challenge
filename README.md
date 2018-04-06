@@ -1,8 +1,12 @@
 # Gladius Coding Challenge
 
-## Intro
-
 Welcome to the Gladius coding challenge. The challenge is pretty simple, create a dApp (Decentralized App) that submits your hiring information (encrypted against our public key) to the blockchain.
+
+## Overview
+
+Blockchain development is relatively new, so we've created this challenge in a way that there are multiple levels of completion. We are looking for creativity and problem solving skills are more important than 100% completion.
+
+This challenge asks that you write a server side application, for instance Node.js with Express routing; an interface to input data to submit; and successfully submitting this data to our deployed contract.
 
 Our contract has been deployed to the Ropsten Test Net. If you need the Application Contract address, email us at [careers@gladius.io](mailto://careers@gladius.io). We want to keep this secret to get an estimate of time to completion.
 
@@ -10,18 +14,64 @@ You will have approximately 2 days to complete and submit your application to th
 
 If anything comes up or you have questions, email us at [careers@gladius.io](mailto://careers@gladius.io).
 
+## Contract Structure
+
+Our Contract: Applications.sol
+
+Getters:
+
+```
+// Returns the PGP Public Key used to encrypt your submission data against
+getPublicKey() -> String
+
+// Returns the Unencrypted data payload with instructions on what to post in submitApplication()
+getPublicData() -> String
+
+// Same as getPublicData, but includes a secret key. This is encrypted against the Public Key below
+getEncryptedData() -> String
+
+// After successfully submitting your application, input your address here to view your submission
+getApplication(Address applicant) -> String
+```
+
+Functions:
+
+```
+// Function to submit your application payload.
+// Takes in a String.
+// We are looking for a JSON payload from getPublicData() or getEncryptedData()
+// Reminder, any unencrypted data is public for anyone on the Ropsten chain, encrypt before submitting here
+submitApplication(String applicationData)
+```
+
 ## What We're Looking For
 
 We will be judging submissions based on code quality, completeness, and time to completion within reason. The main qualities we look for are resourcefulness and the desire to learn / try new technology.
 
-There are multiple levels of "success" in this exercise:
+Levels of Completion and Tasks to Complete:
 
-* Create a project to read in public data from the Contract
-* Create, read, and submit the data as a string to the Contract
-* Create, read the encrypted string, decrypt it, re-encrypt it against the Contract's Public PGP Key, and submit it to the Contract
-* Same as above, but with an UI
+* Level 1
+  * Create a server side application
+  * This application reads `getPublicData()` from the Ropsten Network deployed contract
+  * The Application takes the response and requests the required fields with a UI
+* Level 2
+  * Same as above plus...
+  * Submits the requested data from `getPublicData()` to the `submitApplication(data)` function in the contract
+* Level 3
+  * Same as above plus...
+  * Reads and decrypts the data payload from `getEncryptedData()`
+  * Re-encrypts this data with the requested information
+  * Submits this back to the contract through the `submitApplication(data)` function
+* Level 4
+  * Same as above plus...
+  * Adds some form of originality and creativity to the UI
+  * Adds ease of use
+  * Pulls in and displays extra data from the limited data given
+  * Any other criteria that shows going above and beyond
 
-## Steps
+Your final project should be uploaded to a GitHub repository publicly. This can be a different user name than your personal user name. If this is an issue, reach out to us and we can take submissions in a different manner.
+
+## General Steps
 
 * Build an dApp to read an Ethereum contract property
 * Decrypt or read the contract's data
@@ -31,10 +81,13 @@ There are multiple levels of "success" in this exercise:
 * Create a way to submit the correct data requested by the property's data
   * Using a REST client, e.g. POSTman, Insomnia, or web form
   * Web UI
-* Submit the data encrypted against the contract's publicKey
-* Upload project to GitHub with these required items
-  * GitHub repo that we can browse your code
-  * Application Address or txHash of the transaction in the `README.md` of the project
+* Submit the data encrypted against the contract's Public Key from `getPublicKey()`
+* Upload project to GitHub with this information in the README
+  * Application Address or txHash of the transaction from submitting data in the `submitApplication(data)` method
+
+If at any point something is unclear or information is not provided, reach out and we can help. We would rather spend some time helping someone over having them blocked for hours on end.
+
+Good Luck!!
 
 ## Resources
 
@@ -46,7 +99,7 @@ Truffle has a great tutorial to use Infura to connect to the Ropsten test networ
 
 A great utility to check statuses, errors, and txHashes: [etherscan](https://ropsten.etherscan.io/)
 
-See the `Application Contract ABI` section of this gist for the Application Contract jsonInterface ABI.
+See the `Application Contract ABI` section of this gist for the Application Contract JSON Interface ABI.
 
 To initialize the Contract in order to call methods, see the [web3 docs](https://web3js.readthedocs.io/en/1.0/web3-eth-contract.html#new-contract).
 
@@ -59,9 +112,10 @@ For encryption / decryption we are currently using [Keybase's PGP library](https
 
 ### Application Contract ABI
 
-Use this in the web3.eth.Contract constructor
+Use this in the `web3.eth.Contract` constructor
 
-See [Application.json](https://github.com/gladiusio/gladius-hiring-challenge/blob/master/Application.json) for full JSON file.
+See [Application-ABI.json
+](https://github.com/gladiusio/gladius-hiring-challenge/blob/master/Application-ABI.json) for full JSON file.
 
 ### Keys
 
